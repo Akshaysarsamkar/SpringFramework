@@ -3,12 +3,17 @@ package SpringJdbc;
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.stereotype.Component;
 
 import Dao.EmpDao;
 import Dao.EmpDaoImpl;
 
+@Configuration
+@ComponentScan(basePackages = "Dao")
 public class SpringJdbcConfig {
 
 	@Bean(name = { "jdbcconfig" })
@@ -32,10 +37,10 @@ public class SpringJdbcConfig {
 
 	}
 
-	@Bean("empdao")
-	public EmpDao empDaoImpl() {
-		EmpDaoImpl dao = new EmpDaoImpl();
-		dao.setJdbcTemplate(jdbcTemplate());
-		return dao;
-	}
+//	@Bean("empdao")
+//	public EmpDao empDaoImpl() {
+//		EmpDaoImpl dao = new EmpDaoImpl();
+//		dao.setJdbcTemplate(jdbcTemplate());
+//		return dao;
+//	}
 }
